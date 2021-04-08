@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>Lc 6-4 Vue intro</title>
+        <style>
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: 'Lato';
+            }
+            .container {
+              flex-direction: column;
+              display: flex;
+              align-items: center;
+              height: 100vh;
+              background-color: lightgrey;
+            }
+            .totH1{
+              display: flex;
+              justify-content: space-around;
+              width: 70vw;
+              flex-wrap: wrap;
+            }
+            .listItems {
+              background-color: white;
+              width: 100px;
+            }
+            .listItems ul {
+              list-style-type: none;
+            }
+            .listItems li{
+              display: flex;
+              justify-content: space-between;
+            }
+            .listItems li i{
+              cursor: pointer;
+            }
+
+
+        </style>
+    </head>
+    <body>
+      <div id="app" class="container">
+        <div class="logo">
+          <img src="1.png" alt="" height="100px">
+        </div>
+        <div class="new-todo">
+          <input type="text" name="" id="" v-model="newTodo">
+          <button class="fas fa-times" @click="clickNewTodo"> Add todo</button>
+        </div>
+        <div class="listItems">
+          <ul v-if="todos.length>0">
+            <li v-for="(todo,index) in todos"> <!-- il v-for mi ripete l elemento li in base alla lunghezza di todos . Il primo é sempre l'elemento mentre l'altro é l indice-->
+              {{todo}}<!--elementosingolo dell array-->
+              <i class="fas fa-times" @click="clickDelateTodo(index)"></i>
+            </li>
+          </ul>
+          <h1 v-else> U not have nothing todo </h1>
+        </div>
+      </div>
+    <script>
+      function init(){
+      new Vue({
+      el: '#app',
+      data: {
+        todos: [
+          'elem 1',
+          'elem 2',
+          'elem 3',
+        ],
+        newTodo:'',
+      },
+      methods: {
+        clickNewTodo: function(){
+          if(this.newTodo.length>0){
+
+            //console.log('ciao ' + this.newTodo) debug
+            this.todos.push(this.newTodo);
+            this.newTodo='';
+          }
+        },
+        clickDelateTodo: function(index){ //con test posso fare passare la variabile messo sulla x
+          this.todos.splice(index,1)
+        }
+      }
+      });
+      };
+      $(init);
+    </script> 
+  </body>
+</html>
