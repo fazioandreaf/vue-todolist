@@ -19,8 +19,17 @@
               display: flex;
               align-items: center;
               height: 100vh;
-              background-color: lightgrey;
+              padding: 10px 10%;
             }
+            .new-todo{
+              padding: 10px 10%;
+              display: flex;
+              width: 100%;
+            }
+            .new-todo>input{
+              flex: 1;
+            }
+            
             .totH1{
               display: flex;
               justify-content: space-around;
@@ -28,14 +37,19 @@
               flex-wrap: wrap;
             }
             .listItems {
-              background-color: white;
-              width: 100px;
+              padding: 10px 10%;
+              background-color: lightgrey;
+              width: 100%;
+              border-radius: 10px;
+              box-shadow: 1px 5px 5px black;
             }
             .listItems ul {
               list-style-type: none;
             }
             .listItems li{
               display: flex;
+              padding: 10px ;
+              border-bottom: 1px solid grey;
               justify-content: space-between;
             }
             .listItems li i{
