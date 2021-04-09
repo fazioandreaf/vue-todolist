@@ -1,0 +1,94 @@
+<!-- array di partenza e stamparlo nell'html -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- fontawsome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        <link rel="shortcut icon" href="1.png" type="image/x-icon">
+        <!-- vue -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <title>Lc 8-4 Vue intro</title>
+        <script src="main.js"></script>
+        <style>
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: 'Lato';
+            }
+            .container {
+              flex-direction: column;
+              display: flex;
+              align-items: center;
+              height: 100vh;
+              padding: 10px 10%;
+            }
+            .new-todo{
+              padding: 10px 10%;
+              display: flex;
+              width: 100%;
+            }
+            .new-todo>input{
+              flex: 1;
+            }
+            
+            .totH1{
+              display: flex;
+              justify-content: space-around;
+              width: 70vw;
+              flex-wrap: wrap;
+            }
+            .listItems {
+              padding: 10px 10%;
+              background-color: lightgrey;
+              width: 100%;
+              border-radius: 10px;
+              box-shadow: 1px 5px 5px black;
+            }
+            .listItems ul {
+              list-style-type: none;
+            }
+            .listItems li{
+              display: flex;
+              padding: 10px ;
+              border-bottom: 1px solid grey;
+              justify-content: space-between;
+            }
+            .listItems li i{
+              cursor: pointer;
+            }
+
+
+        </style>
+    </head>
+    <body>
+      <div id="app" class="container">
+        <div class="logo">
+          <img src="1.png" alt="" height="50px">
+        </div>
+        <div class="new-todo">
+
+            <input type="text" v-model="nuovoTask"
+            v-on:keyUp.enter="aggiungiTask">
+            <button @click="aggiungiTask" >Aggiungi Task</button>
+        </div>
+        <!-- {{nuovoTask}} -->
+        <div class="listItems">
+            <!-- condizione soddisfatta -->
+            <ul v-if="toDoList.length>0"> 
+                <!-- elem simile all'indice i del ciclo for,  dove viene indicato dal secondo elemento. Inserinedo index a destra fa si che si passi pure un indice
+                -->
+                <li v-for="(elem,indice) in toDoList">{{indice+1}} {{elem}}
+                    <i class="fas fa-times" v-on:click="rimuoviTodo(indice)"></i>
+                </li>
+            </ul>
+            <!-- Condizione non soddisfatta -->
+            <h1 v-else>Sei libero, vatti a fare una passeggiata a distanza dagli altri. Disinfettati le mani e mettiti la mascherina</h1>
+        </div>
+      </div>
+    <script>
+    </script> 
+  </body>
+</html>
