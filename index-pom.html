@@ -71,7 +71,7 @@
         <div class="new-todo">
 
             <input type="text" v-model="nuovoTask"
-            v-on:keyUp.enter="aggiungiTask">
+            :keyUp.enter="aggiungiTask">
             <button @click="aggiungiTask" >Aggiungi Task</button>
         </div>
         <!-- {{nuovoTask}} -->
